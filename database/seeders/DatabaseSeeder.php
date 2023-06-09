@@ -23,7 +23,7 @@ class DatabaseSeeder extends Seeder
             'name'=>'Admin',
             'email'=>'admin@admin.com',
             'password'=>\Illuminate\Support\Facades\Hash::make('password'),
-            'role'=> 'admin',
+            'role'=>\App\Enums\UserRole::Admin->value,
         ]);
 
         (new \App\Models\User())->create([
