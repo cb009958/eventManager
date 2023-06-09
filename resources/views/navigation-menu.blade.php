@@ -5,14 +5,14 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
+                    <a href="{{ route('admin.dashboard') }}">
                         <x-application-mark class="block h-9 w-auto" />
                     </a>
                 </div>
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                    <x-nav-link href="{{ route('admin.dashboard') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
 
@@ -20,9 +20,9 @@
                         {{ __('Home') }}
                     </x-nav-link>
 
-                  {{-- <x-nav-linkhref="route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                    <x-nav-link href="route('admin.dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
-                    </x-nav-link>--}}
+                    </x-nav-link>
 
                 </div>
             </div>
@@ -101,13 +101,36 @@
                             @endif
                         </x-slot>
                         <x-slot name="content">
+                            <!-- Administration -->
+                            <div class="block px-4 py-2 text-xs text-gray-400">
+                                {{ __('Administration') }}
+                            </div>
+
+                            <x-dropdown-link href="{{ route('admin.event.index') }}">
+                                {{ __('Events') }}
+                            </x-dropdown-link>
+
+                            <x-dropdown-link href="{{ route('admin.category.index') }}">
+                                {{ __('Categories') }}
+                            </x-dropdown-link>
+
+                            <x-dropdown-link href="{{ route('admin.reservations.index') }}">
+                                {{ __('Reservations') }}
+                            </x-dropdown-link>
+
+                            <x-dropdown-link href="{{ route('admin.users.index') }}">
+                                {{ __('Users') }}
+                            </x-dropdown-link>
+
                             <!-- Account Management -->
                             <div class="block px-4 py-2 text-xs text-gray-400">
                                 {{ __('Manage Account') }}
                             </div>
+
                             <x-dropdown-link href="{{ route('profile.show') }}">
                                 {{ __('Profile') }}
                             </x-dropdown-link>
+
                             @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
                                 <x-dropdown-link href="{{ route('api-tokens.index') }}">
                                     {{ __('API Tokens') }}
@@ -141,7 +164,7 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+            <x-responsive-nav-link href="{{ route('admin.dashboard') }}" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
         </div>

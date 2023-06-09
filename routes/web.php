@@ -14,12 +14,34 @@ Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified'
-])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
-});
+])
+    ->prefix('admin')
+    ->group(function () {
+        Route::get('/dashboard', function () {
+            return view('dashboard');
+        })->name('admin.dashboard');
+        
+        Route::get('/event', function () {
+            return view('admin.event.index');
+        })->name('admin.event.index');
+
+        Route::get('/category', function () {
+            return view('admin.category.index');
+        })->name('admin.category.index');
+
+        Route::get('/reservations', function () {
+            return view('admin.reservations.index');
+        })->name('admin.reservations.index');
+
+        Route::get('/users', function () {
+            return view('admin.users.index');
+        })->name('admin.users.index');
+    });
+
 Route::get('event/{id}', function ($id) {
+
+    debug(auth()->user());
+
     //dd(\App\Enums\UserRole::User);
 
     //dd(auth()->user());
