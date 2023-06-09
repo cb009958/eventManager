@@ -67,6 +67,7 @@
                                     Whether you are a wine connoisseur or simply appreciate the finer things in life, this Winery Event promises an unforgettable evening of gastronomic delights and sensory pleasures. Don't miss this opportunity to enhance your wine knowledge, discover new flavors, and create lasting memories.
                                 </dd>
                             </div>
+                            
                             <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                                 <dt class="text-sm font-medium text-gray-900">RSVP</dt>
                                 <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">Please RSVP by June 10, 2023, to reserve your spot.</dd>
