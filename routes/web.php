@@ -1,5 +1,9 @@
 <?php
 use Illuminate\Support\Facades\Route;
+
+use App\Http\Controllers\HotelController as HotelController;
+use App\Http\Controllers\Admin\HotelController as AdminHotelController;
+use App\Http\Controllers\HomeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,27 +20,26 @@ Route::middleware([
     'verified',
     'role:admin'
 ])
-    ->prefix('admin')
-    ->group(function () {
-        Route::get('/dashboard', function () {
-            return view('dashboard');
-        })->name('admin.dashboard');
+->prefix('admin')
+->name('admin.')
+->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
         
-        Route::get('/event', function () {
-            return view('admin.event.index');
-        })->name('admin.event.index');
+    Route::resource('/events', AdminHotelController::class);
 
         Route::get('/category', function () {
             return view('admin.category.index');
-        })->name('admin.category.index');
+        })->name('category.index');
 
         Route::get('/reservations', function () {
             return view('admin.reservations.index');
-        })->name('admin.reservations.index');
+        })->name('reservations.index');
 
         Route::get('/users', function () {
             return view('admin.users.index');
-        })->name('admin.users.index');
+        })->name('users.index');
     });
 
 Route::get('event/{id}', function ($id) {
@@ -54,12 +57,10 @@ Route::get('event/{id}', function ($id) {
 
 -> name('event.show');
 
-Route::get('reserve/{id}', function($id){
+Route::get('reserve/{id}', function ($id) {
     return view('event.reservation',[
         'reserve' => $id
     ]);
 })->name('event.reservation');
 
-Route::get('/', function () {
-    return view('home');
-})->name('home');
+Route::get('/', HomeController::class)->name('home');

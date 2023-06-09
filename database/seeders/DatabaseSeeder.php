@@ -32,5 +32,10 @@ class DatabaseSeeder extends Seeder
             'password'=>'admin123',
             'role'=> 'admin',
         ]);
+
+        $this->call([
+            CategorySeeder::class,
+            HotelSeeder::class,
+        ]);
     }
 }

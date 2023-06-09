@@ -107,7 +107,7 @@
                                 {{ __('Administration') }}
                             </div>
 
-                            <x-dropdown-link href="{{ route('admin.event.index') }}">
+                            <x-dropdown-link href="{{ route('admin.events.index') }}">
                                 {{ __('Events') }}
                             </x-dropdown-link>
 
