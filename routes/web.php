@@ -20,6 +20,10 @@ Route::middleware([
     })->name('dashboard');
 });
 Route::get('event/{id}', function ($id) {
+    //dd(\App\Enums\UserRole::User);
+
+    //dd(auth()->user());
+
     return view('event.show',[
         'event' => $id
     ]);
